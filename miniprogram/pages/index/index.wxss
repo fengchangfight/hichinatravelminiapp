@@ -1,0 +1,50 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+
+.search {
+  position: relative;
+  width: 100vw;
+  height: 50rpx;
+  display: flex;
+  box-sizing: border-box;
+  padding-left: 26rpx;
+  background-color: white;
+  justify-content: center;
+}
+
+.search-placeholder {
+  font-size: 14px;
+  color: #A9A5A6;
+  line-height: 62rpx;
+  background-color : #F7F8FA; 
+  align-items: center;
+}
+
+.search input {
+  display: block;
+  box-sizing: border-box;
+  background: #F7F8FA;
+  height: 62rpx;
+  border-radius: 20rpx;
+  padding-left: 20rpx;
+  line-height: 62rpx;
+  font-size: 12px;
+}

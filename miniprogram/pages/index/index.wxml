@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<van-sticky>
+  <view class="search" style="height:{{navHeight}}px;padding-top:{{navTop}}px">
+    <input placeholder-class="search-placeholder"
+      style="width:80%;" type="text" placeholder="Search your place" disabled
+      value="{{name}}" bindinput="bindinput" bindtap="goSearch"></input>
+      <van-icon name="add" color="#e64340" size="48rpx"  bind:click="addShopCar" />
+  </view>
+</van-sticky>
+
