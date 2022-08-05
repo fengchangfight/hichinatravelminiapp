@@ -48,3 +48,64 @@
   line-height: 62rpx;
   font-size: 12px;
 }
+
+.categoryandlang-container {
+  display: flex;
+  flex-direction: row
+}
+
+.swiper-container {
+  width: 750rpx;
+  height: 375rpx;
+  position: relative;
+  z-index: 1;
+  margin-top: 15px;
+}
+.swiper-container .swiper1 {
+  width: 750rpx;
+  height: 375rpx;
+}
+
+.button_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-style: ridge;
+  margin-top: 10px;
+  margin-left: 2px;
+}
+  
+/* 按钮未选中 */
+.normal_button{
+  background: white;
+  border-radius:0;
+}
+/* 按钮选中 */
+.checked_button{
+background: #9E9E9E;
+color: white;
+border-radius:0;
+}
+
+.checked_button::after{
+  border:none;
+}
+.normal_button::after{
+  border:none;
+}
+
+.section__ctn{
+  margin-top: 10px;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.scroller-card-container{
+  height: 40em;
+}
+.text-on-image{
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
