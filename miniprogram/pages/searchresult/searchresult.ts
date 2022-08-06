@@ -1,36 +1,13 @@
-// index.ts
-// 获取应用实例
-const app = getApp<IAppOption>()
-const APP = getApp()
-const WXAPI = require('apifm-wxapi')
-WXAPI.init('gooking')
-type ImageCardType = {
-  id: number;
-  name: string;
-  url: string;
-}
+// pages/searchresult/searchresult.ts
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    activeCategory: 1,
-    buttons: [
-      { id: 1, name: 'Flight', checked: true }, 
-      { id: 2, name: 'Tours', checked: false }, 
-      { id: 3, name: 'Hotels', checked: false }
-    ],
-    langopts: [
-      { text: 'En', value: 0 },
-      { text: '한국인', value: 1 }
-    ],
-    lang: 0,
+    flightListSliced: <any>[],
     pageSize: 10,
     pageNum: 0,
-    flightListSliced: <any>[],
     fullsetflight20:[
       {id: 1, name:"sampleflight", url:"https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"},
       {id: 2, name:"sampleflight", url:"https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"},
@@ -52,24 +29,31 @@ Page({
       {id: 18, name:"sampleflight", url:"https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"},
       {id: 19, name:"sampleflight", url:"https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"},
       {id: 20, name:"sampleflight", url:"https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"},
-    ]
+    ],
+    langopts: [
+      { text: 'En', value: 0 },
+      { text: '한국인', value: 1 }
+    ],
+    lang: 0,
+    buttons: [
+      { id: 1, name: 'Flight', checked: true }, 
+      { id: 2, name: 'Tours', checked: false }, 
+      { id: 3, name: 'Hotels', checked: false }
+    ],
+  },
 
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad() {
+    wx.setNavigationBarTitle({
+      title: "Shanghai"
+   })
+   this.getSearchResultByCategory("Flight")
   },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
-      url: '../logs/logs',
-    })
-  },
-  // onReachBottom() {
-  //   this.getFlightSlices()
-  //   console.log("===bottom reached")
-  // },
-  scrolltolower(){
-    this.getFlightSlices()
-    console.log("===bottom reached")
-  },
-  getFlightSlices(){
+
+  getFlightSlices(querytext: string){
+    console.log("===I'm searching page by page==="+querytext)
     if(this.data.fullsetflight20.length/this.data.pageSize-1<this.data.pageNum){
       console.log("...No more data")
     }else{
@@ -84,27 +68,14 @@ Page({
       }
     }
   },
-  goSearch(){
-    console.log("===tapping search")
-    wx.navigateTo({
-      url: `/pages/searchresult/searchresult`,
-    })
+  getSearchResultByCategory(v: string){
+    console.log("======")
+    console.log(v)
+    console.log("-----")
+    this.getFlightSlices(v)
   },
-  onLoad() {
-    this.getFlightSlices()
-    this.initBanners()
-    // @ts-ignore
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-      this.setData({
-        navHeight: APP.globalData.navHeight,
-        navTop: APP.globalData.navTop,
-        windowHeight: APP.globalData.windowHeight,
-        menuButtonObject: APP.globalData.menuButtonObject //小程序胶囊信息
-      })
-    }
+  scrolltolower: function() {
+    this.getSearchResultByCategory("Flight")
   },
   radioButtonTap: function (e: { currentTarget: { dataset: { id: any } } }) {
     console.log(e)
@@ -124,34 +95,53 @@ Page({
     buttons: this.data.buttons
     })
   },
-  async initBanners(){
-    WXAPI.banners().then((res: { code: number; data: any }) => {
-      if (res.code == 0) {
-        this.setData({
-          banners: res.data
-        })
-      }
-    })
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
   },
-  getUserProfile() {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+
   },
-  getUserInfo(e: any) {
-    // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage() {
+
   }
 })

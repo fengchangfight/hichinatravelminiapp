@@ -1,0 +1,24 @@
+<!--pages/searchresult/searchresult.wxml-->
+<view class="categoryandlang-container">
+  <view class='button_container' style="width: 70%;">
+  <block wx:for="{{buttons}}" wx:key="buttons">
+    <button size="default" class='{{item.checked?"checked_button":"normal_button"}}' data-id='{{item.id}}' bindtap='radioButtonTap'>{{item.name}}</button>
+  </block>
+</view>
+  <view style="width: 30%; padding-left: 10px;margin-top:12px;">
+    <van-dropdown-menu>
+      <van-dropdown-item value="{{ lang }}" options="{{ langopts }}" />
+    </van-dropdown-menu>
+  </view>
+</view>
+<scroll-view style="height: 40em;margin-top:20px;" scroll-y="true" refresher-enabled bindscrolltolower="scrolltolower">
+  <view class="search-result-container">
+    <view class="search-result-box" wx:for="{{flightListSliced}}" wx:key="id" bindtap="toDetailsTap" data-id="{{item.id}}">
+      <view class="img-box">
+        <image src="{{item.url}}" class="image" mode="aspectFill" lazy-load="true" />
+      </view>
+      <view class="search-result-title van-multi-ellipsis--l2">{{item.name}}</view>
+      <view class="van-multi-ellipsis--l2" style="-webkit-line-clamp: 1;">{{item.name}}</view>
+    </view>
+  </view>
+</scroll-view>

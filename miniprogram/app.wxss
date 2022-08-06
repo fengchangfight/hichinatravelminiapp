@@ -9,3 +9,22 @@
   box-sizing: border-box;
 } 
 
+
+/* 按钮未选中 */
+.normal_button{
+  background: white;
+  border-radius:0;
+}
+/* 按钮选中 */
+.checked_button{
+background: #9E9E9E;
+color: white;
+border-radius:0;
+}
+
+.checked_button::after{
+  border:none;
+}
+.normal_button::after{
+  border:none;
+}
