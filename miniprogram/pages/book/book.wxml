@@ -1,0 +1,44 @@
+<!--pages/book/book.wxml-->
+<view>
+<image src="{{bookItem.imageUrl}}" class="slide-image" mode="aspectFill" lazy-load="true" />
+<view class="van-multi-ellipsis--l2" style="-webkit-line-clamp: 1;padding-left: 5px;">{{bookItem.title}}</view>
+<view style="color: red;font-weight: bold;margin-top: 10px;"><text>¥</text> {{bookItem.price}}</view>
+<view style="width:80%;margin-top: 10px;">
+  <van-collapse accordion value="{{ activeName }}" bind:change="onChange">
+  <van-collapse-item title="Notes" name="1">
+    Please book at least 3 days in advance
+  </van-collapse-item>
+  <van-collapse-item title="Contact us" name="2">
+    hichina@some.com
+  </van-collapse-item>
+</van-collapse>
+</view>
+<view style="margin-top: 20px;margin-left: 10px;">Please choose date:</view>
+<view class="range-style mar-top">
+                <!-- 时间段 -->  
+                    <view class="picker_group">  
+                    <picker mode="date" value="{{startdate}}"  end="{{enddate}}" bindchange="bindDateChange">  
+                        <view class="picker">  
+                        <text class = "{{startdate=='开始日期'?'text-style1':'text-style2'}}">{{startdate}}</text>
+                        </view>  
+                    </picker>  
+                    <text class = "text-style1">~</text> 
+                    <picker mode="date" value="{{enddate}}" start="{{startdate}}" end="2050-01-01" bindchange="bindDateChange2">  
+                        <view class="picker">  
+                        <text class = "{{enddate=='结束日期'?'text-style1':'text-style2'}}">{{enddate}}</text> 
+                        </view>  
+                    </picker>        
+      </view>  
+</view>
+<view style="margin-top: 20px;">
+  <van-icon name="comment-circle" />
+  <text style="font-weight: bold;">Transport Info</text>
+</view>
+<view style="padding-left: 10px; font-weight: lighter;">
+   {{bookItem.transportInfo}}
+</view>
+<view style="display: flex;margin-top: 20px;">
+  <van-button icon="service" type="default" style="width: 50%;" ></van-button>
+  <van-button type="info" style="width: 50%;" data-shopType="{{shopType}}" bindtap="bookNow()" block>Book Now</van-button>
+</view>
+</view>

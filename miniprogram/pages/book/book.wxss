@@ -1,0 +1,37 @@
+/* pages/book/book.wxss */
+.range-style {
+  display: flex;
+  align-items: center;
+  padding-left: 10rpx;
+  background-color: #fff;
+}
+.mar-top {
+  margin-top: 30rpx;
+}
+.picker-title {
+  font-size: 32rpx;
+  width: 150rpx;
+}
+.picker_group {
+  color: #888;
+  border: 1rpx solid #A4A6AE;
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  font-size: 32rpx;
+}
+.text-style1{
+  color:#A4A6AE;
+}
+.text-style2{
+  color:rgb(0,0,0,0.8);
+}
+.picker_group picker {
+  font-size: 34rpx;
+  height: 45rpx;
+  padding-left:20rpx;
+  padding-right:20rpx;
+  line-height: 45rpx;
+}
