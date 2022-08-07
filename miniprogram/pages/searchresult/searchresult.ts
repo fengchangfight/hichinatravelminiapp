@@ -74,6 +74,13 @@ Page({
     console.log("-----")
     this.getFlightSlices(v)
   },
+  toDetailsTap: (e: any) => {
+    const id = e.currentTarget.dataset.id
+    console.log("-----going to detail:" + id)
+    wx.navigateTo({
+      url: `/pages/book/book?id=${id}`,
+    })
+  },
   scrolltolower: function() {
     this.getSearchResultByCategory("Flight")
   },

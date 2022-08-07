@@ -17,7 +17,6 @@
       <view class="img-box">
         <image src="{{item.url}}" class="image" mode="aspectFill" lazy-load="true" />
       </view>
-      <view class="search-result-title van-multi-ellipsis--l2">{{item.name}}</view>
       <view class="van-multi-ellipsis--l2" style="-webkit-line-clamp: 1;">{{item.name}}</view>
     </view>
   </view>
