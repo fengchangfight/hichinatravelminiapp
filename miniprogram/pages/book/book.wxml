@@ -39,6 +39,6 @@
 </view>
 <view style="display: flex;margin-top: 20px;">
   <van-button icon="service" type="default" style="width: 50%;" ></van-button>
-  <van-button type="info" style="width: 50%;" data-shopType="{{shopType}}" bindtap="bookNow()" block>Book Now</van-button>
+  <van-button type="info" style="width: 50%;" bindtap="bookNow" block>Book Now</van-button>
 </view>
 </view>

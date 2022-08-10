@@ -37,10 +37,6 @@ Page({
   onReady() {
   },
 
-  bookNow(){
-    console.log("fake booking for "+this.data.itemId)
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -100,6 +96,13 @@ Page({
    */
   onReachBottom() {
 
+  },
+
+  bookNow() {
+    console.log("fake booking for "+this.data.itemId)
+    wx.navigateTo({
+      url: `/pages/payment/payment`,
+    })
   },
 
   /**
