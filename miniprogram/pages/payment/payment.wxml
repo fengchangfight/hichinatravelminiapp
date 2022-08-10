@@ -1,0 +1,77 @@
+<!--pages/payment/payment.wxml-->
+<view>
+Days
+</view>
+<view style="margin-top: 10px;"><text style="background-color: #398CE8;color:white;padding-left: 20px;padding-right: 20px;">4 days 3 nights</text>
+</view>
+<view style="margin-top: 10px;">
+Option
+</view>
+<view style="margin-top: 10px;"><text style="background-color: #398CE8;color:white;padding-left: 20px;padding-right: 20px;">3 Nights/ Lavande Hotel (Shanghai Pudong International Airport Chuansha)</text>
+</view>
+<block wx:for="{{travelers}}" wx:key="travelers">
+  <van-icon wx:if="{{index>0}}" size="25px;" style="padding-left: 15px;padding-top: 10px;" bind:click="deleteTraveler" data-index='{{index}}' name="delete" />
+  <view>
+  <van-cell-group>
+  <van-field
+    bind:input='changeTranvelerNameInList' data-index='{{index}}'
+    clearable
+    label="Name"
+    value="{{ travelers[index].name }}"
+    placeholder="Enter your name"
+  />
+
+  <van-field
+  bind:input='changeTranvelerPassportnoInList' data-index='{{index}}'
+    label="Passport NO."
+    value="{{ travelers[index].passportno }}"
+    placeholder="Enter your passport No."
+    border="{{ false }}"
+  />
+</van-cell-group>
+</view>
+<view>
+  <picker mode="date" value="{{travelers[index].birthdate}}" bindchange="bindBirthDateChange" data-index='{{index}}'>
+    <view class="picker">
+      <van-field
+    value="{{ travelers[index].birthdate }}"
+    label="Birth date"
+    placeholder="Enter your birth date"
+    border="{{ false }}"
+  />
+    </view>
+  </picker>
+</view>
+<view>
+  <picker mode="date" value="{{ travelers[index].passportvaliddate}}" data-index='{{index}}'
+  bindchange="bindPassportValidDateChange">
+    <view class="picker">
+      <van-field
+    value="{{  travelers[index].passportvaliddate }}"
+    label="Passport valid date"
+    placeholder="Enter your passport valid date"
+    border="{{ false }}"
+  />
+    </view>
+  </picker>
+</view>
+<view class="divLine"></view>
+</block>
+
+<view  style="text-align: center; margin-top: 10px;" >
+  <van-button icon="add" bind:click="addMoreTravelers" color="#505050" round type="info">More travelers</van-button>
+</view>
+
+<view style="margin-top:20px;padding-left:10px;">
+<text style="font:bold;">Payment</text>
+<view>
+  <van-radio-group value="{{ selectedPay }}" bind:change="selectPay">
+    <van-radio name="1">微信</van-radio>
+    <van-radio name="2">支付宝</van-radio>
+  </van-radio-group>
+</view>
+</view>
+<view style="display: flex;margin-top: 20px;">
+  <van-button icon="service" type="default" style="width: 50%;" ></van-button>
+  <van-button type="info" style="width: 50%;" bindtap="execuetBookNow" block>Book Now</van-button>
+</view>
