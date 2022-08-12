@@ -1,0 +1,19 @@
+<!--pages/myorder/myorder.wxml-->
+<view>
+   <block wx:for="{{myOrders}}" wx:key="id"> 
+    <van-card
+    tag="{{item.status}}"
+  price="{{item.price}}"
+  title="{{item.title}}"
+>
+  <view slot="footer">
+    <van-button data-index='{{index}}' bind:click="deleteOrder" size="mini">Delete</van-button>
+    <van-button data-index='{{index}}' size="mini" bind:click="goOrderDetails" type="info">Details</van-button>
+  </view>
+</van-card>
+   </block>
+</view>
+<view class="anniu" style="display: flex;margin-top: 20px;">
+  <van-button icon="service" type="default" style="width: 50%;" ></van-button>
+  <van-button type="info" style="width: 50%;" bindtap="Contact us" block>Contact Us</van-button>
+</view>
