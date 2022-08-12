@@ -4,7 +4,9 @@
     "pages/logs/logs",
     "pages/searchresult/searchresult",
     "pages/book/book",
-    "pages/payment/payment"
+    "pages/payment/payment",
+    "pages/myorder/myorder",
+    "pages/orderdetail/orderdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,7 +28,8 @@
     "van-field": "@vant/weapp/field/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "van-radio": "@vant/weapp/radio/index",
-    "van-radio-group": "@vant/weapp/radio-group/index"
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-card": "@vant/weapp/card/index"
   },
   "sitemapLocation": "sitemap.json"
 }

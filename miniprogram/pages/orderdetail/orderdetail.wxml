@@ -1,0 +1,29 @@
+<!--pages/orderdetail/orderdetail.wxml-->
+<view style="background-color: yellow;padding-top:10px;padding-bottom: 10px;">
+<text style="padding-left:10px;">{{orderDetail.status}}</text>
+<text style="color: red; float: right;padding-right:10px;">${{orderDetail.price}}</text>
+</view>
+<view>
+  <van-card
+  num="1"
+  price="{{orderDetail.price}}"
+  desc="{{orderDetail.date}}"
+  title="{{orderDetail.title}}"
+/>
+</view>
+<view class="divLine"></view>
+<view style="margin-top: 10px;padding-left: 5px;">
+<text style="font-weight: bold;margin-bottom: 10px;">Order Information</text>
+<text>
+Order Number: {{orderDetail.orderNum}}
+Order Time: {{orderDetail.date}}
+</text>
+</view>
+<view class="divLine"></view>
+<view style="margin-top: 10px;padding-left: 5px;">
+<text style="font-weight: bold;margin-bottom: 10px;">Reservation Information</text>
+<text>
+Contact: {{orderDetail.contact}}
+Remark: {{orderDetail.remark}}
+</text>
+</view>

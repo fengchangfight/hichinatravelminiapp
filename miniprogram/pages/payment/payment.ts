@@ -11,6 +11,12 @@ Page({
     maxDate: new Date(2099, 10, 1).getTime(),
     travelers: <any>[],
   },
+  execuetBookNow(){
+    console.log("===go to my order page")
+    wx.navigateTo({
+      url: `/pages/myorder/myorder`,
+    })
+  },
   deleteTraveler(e:any){
     var idx = e.currentTarget.dataset.index; 
     console.log("===delete id:"+idx)
